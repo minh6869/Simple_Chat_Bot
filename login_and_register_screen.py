@@ -1,16 +1,20 @@
 import customtkinter
-import tkinter
 from PIL import Image
+#pip install customtkinter
+#pip install pillow
 import time
+import os
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("green")
+current_path = os.getcwd()
 def test():
     print("helolo")
 def clock():
-    hour = time.strftime("%I")
-    minute = time.strftime("%H")
-    second = time.strftime("%S")
+    now = time.time()
+    hour = time.strftime("%H", time.localtime(now))
+    minute = time.strftime("%M", time.localtime(now))
+    second = time.strftime("%S", time.localtime(now))
     clock_label.configure(text = hour + ":" + minute + ":" + second)
     clock_label.after(1000, clock)
 
@@ -48,7 +52,7 @@ frame_support = customtkinter.CTkFrame(master = frame_main,
 frame_support.place(relx = 0.5, rely = 0.913, anchor = "center")
 
 # thêm các thành phần vào frame_logo
-logo_image = customtkinter.CTkImage(light_image=Image.open(r"C:\Users\Hello\Desktop\chatbot local\image\logo.png"),
+logo_image = customtkinter.CTkImage(light_image=Image.open(rf"{current_path}\image\logo.png"),
                                     size=(80, 80))
 logo_label = customtkinter.CTkLabel(master = frame_logo, image=logo_image, text=None)
 logo_label.place(relx = 0.065, rely = 0.5, anchor = "center")
@@ -74,7 +78,7 @@ clock_label = customtkinter.CTkLabel(master = frame_logo,
                                      text_color="#BF8EFD")
 clock_label.place(relx = 0.75, rely = 0.5, anchor = "center")
 
-setting_image = customtkinter.CTkImage(light_image=Image.open(r"C:\Users\Hello\Desktop\chatbot local\image\setting.png"),
+setting_image = customtkinter.CTkImage(light_image=Image.open(rf"{current_path}\image\setting.png"),
                                        size=(30,30))
 setting_button = customtkinter.CTkButton(master = frame_logo,
                                          image=setting_image,
@@ -84,7 +88,7 @@ setting_button = customtkinter.CTkButton(master = frame_logo,
                                          text=None)
 setting_button.place(relx = 0.9, rely = 0.5, anchor = "center")
 
-notification_image = customtkinter.CTkImage(light_image=Image.open(r"C:\Users\Hello\Desktop\chatbot local\image\notification.png"),
+notification_image = customtkinter.CTkImage(light_image=Image.open(rf"{current_path}\image\notification.png"),
                                             size = (30,30))
 notification_button = customtkinter.CTkButton(master = frame_logo, 
                                               image=notification_image, 
@@ -149,7 +153,7 @@ verify_password_entry = customtkinter.CTkEntry(master = frame_center,
                                         corner_radius=18)
 verify_password_entry.place(relx = 0.238, rely = 0.601, anchor = "center")
 
-sign_up_image = customtkinter.CTkImage(light_image=Image.open(r"C:\Users\Hello\Desktop\chatbot local\image\signup.png"),
+sign_up_image = customtkinter.CTkImage(light_image=Image.open(rf"{current_path}\image\signup.png"),
                                        size=(35,35))
 sign_up_button = customtkinter.CTkButton(master = frame_center,
                                          image=sign_up_image,
@@ -201,7 +205,7 @@ passwd_entry = customtkinter.CTkEntry(master = frame_center,
                                         corner_radius=18)
 passwd_entry.place(relx = 0.743, rely = 0.319, anchor = "center")
 
-login_image = customtkinter.CTkImage(light_image=Image.open(r"C:\Users\Hello\Desktop\chatbot local\image\login.png"),
+login_image = customtkinter.CTkImage(light_image=Image.open(rf"{current_path}\image\login.png"),
                                      size=(35,35))
 login_button = customtkinter.CTkButton(master = frame_center,
                                        image=login_image,
@@ -215,15 +219,15 @@ login_button.place(relx = 0.743, rely = 0.511, anchor = "center")
 
 # thêm các thành phần vào frame_support
 
-mailbox_image = customtkinter.CTkImage(light_image=Image.open(r"C:\Users\Hello\Desktop\chatbot local\image\mailbox.png"),
+mailbox_image = customtkinter.CTkImage(light_image=Image.open(rf"{current_path}\image\mailbox.png"),
                                       size = (22,22))
-github_image = customtkinter.CTkImage(light_image=Image.open(r"C:\Users\Hello\Desktop\chatbot local\image\github.png"),
+github_image = customtkinter.CTkImage(light_image=Image.open(rf"{current_path}\image\github.png"),
                                       size=(35,35))
-donate_image = customtkinter.CTkImage(light_image=Image.open(r"C:\Users\Hello\Desktop\chatbot local\image\donate.png"),
+donate_image = customtkinter.CTkImage(light_image=Image.open(rf"{current_path}\image\donate.png"),
                                       size=(25,25))
-support_image = customtkinter.CTkImage(light_image=Image.open(r"C:\Users\Hello\Desktop\chatbot local\image\support.png"),
+support_image = customtkinter.CTkImage(light_image=Image.open(rf"{current_path}\image\support.png"),
                                        size=(25,25))
-version_image = customtkinter.CTkImage(light_image=Image.open(r"C:\Users\Hello\Desktop\chatbot local\image\version.png"),
+version_image = customtkinter.CTkImage(light_image=Image.open(rf"{current_path}\image\version.png"),
                                        size=(25,25))
 contact_button = customtkinter.CTkButton(master=frame_support,
                                          image=mailbox_image,
@@ -272,6 +276,5 @@ Donate_button.place(relx = 0.273, rely = 0.4, anchor = "center")
 Support_button.place(relx = 0.372, rely = 0.4, anchor = "center")
 version_button.place(relx = 0.9, rely = 0.4, anchor = "center")
 clock()
-
 
 app.mainloop()
